@@ -14,4 +14,6 @@ COPY . /src
 RUN cd /src && \
     python3 ./setup.py install
 
-ENTRYPOINT ["withings-sync"]
+RUN echo "$(( $RANDOM % 59 + 0 )) */2 * * * withings-sync" >> /var/spool/cron/crontabs/root
+
+ENTRYPOINT ["crond", "-f", "-l", "2", "-L", "/dev/stdout"]
