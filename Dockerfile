@@ -16,4 +16,4 @@ RUN cd /src && \
 
 RUN echo "$(( $RANDOM % 59 + 0 )) */2 * * * withings-sync" >> /var/spool/cron/crontabs/root
 
-ENTRYPOINT ["crond", "-f", "-l", "2", "-L", "/dev/stdout"]
+ENTRYPOINT ["crond", "-f", "-l", "3", "-L", "/dev/stdout"]
